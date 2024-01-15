@@ -115,9 +115,6 @@ pwa:
 
 paginate: 10
 
-# The base URL of your site
-baseurl: "https://blog.nspawn.org"
-
 # ------------ The following options are not recommended to be modified ------------------
 
 kramdown:
