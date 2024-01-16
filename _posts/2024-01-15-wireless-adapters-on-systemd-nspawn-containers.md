@@ -5,6 +5,9 @@ date: 2024-01-15 11:47 -0500
 categories: [linux, systemd, nspawn, containers, wireless, wifi, network]
 tags: [linux, systemd, nspawn, containers, wireless, wifi, network]
 author: edu4rdshl
+image:
+  path: /wifi_adapter.png
+  alt: Wireless adapter
 ---
 ## The problem
 The last night I was trying to setup a systemd-nspawn container that will use a wireless adapter to perform some WiFi pentesting. I said to myself, this is going to be easy, I just need to bind the wireless adapter to the container and that's it. But I was wrong, when I tried to start the container with `Interface=wlan0` on my `.nspawn` configuration file, I got the following error:
