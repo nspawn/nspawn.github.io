@@ -8,10 +8,25 @@ author: edu4rdshl
 image:
   path: /wifi_adapter.png
   alt: Wireless adapter
+excerpt: Passing a wireless adapter to a systemd-nspawn container is not as easy as it seems, but it's possible.
 ---
-Passing a wireless adapter to a systemd-nspawn container is not as easy as it seems, but it's possible.
 
-Update: it's going to change with [this pull request](https://github.com/systemd/systemd/pull/30956) and should just work out of the box using the `Interface=` option on the `.nspawn` configuration file. I will update this post or create a new one when the feature is released.
+#### Update 2
+15/04/2024: the feature is already available on the latest systemd versions. You can use the `Interface=` option on the `.nspawn` configuration file to bind the wireless adapter to the container. I.e.:
+
+```bash
+$ cat /etc/systemd/nspawn/container.nspawn
+[Exec]
+Boot=true
+PrivateUsers=true
+
+[Network]
+Interface=wlan0
+```
+and it should just work.
+
+#### Update 1
+25/01/2024: it's going to change with [this pull request](https://github.com/systemd/systemd/pull/30956) and should just work out of the box using the `Interface=` option on the `.nspawn` configuration file. I will update this post or create a new one when the feature is released.
 
 ## The problem
 The last night I was trying to setup a systemd-nspawn container that will use a wireless adapter to perform some WiFi pentesting. I said to myself, this is going to be easy, I just need to bind the wireless adapter to the container and that's it. But I was wrong, when I tried to start the container with `Interface=wlan0` on my `.nspawn` configuration file, I got the following error:
